@@ -45,8 +45,18 @@ const Hero = (props: HeroProps) => {
           Solo or squad.
         </Typography>
       </Box>
-      <Box>
-        <img src="/assets/images/tabby_hero.png" alt="Hero" />
+      <Box
+        sx={{
+          width: "100%",
+          // height: "400px",
+          // maxWidth: "600px",
+        }}
+      >
+        <img
+          src="/assets/images/tabby_hero.png"
+          alt="Hero"
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        />
       </Box>
       <Typography
         variant="body1"
