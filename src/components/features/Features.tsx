@@ -13,8 +13,8 @@ const Features = (props: FeaturesProps) => {
         display: "flex",
         flexDirection: "column",
         textAlign: "left",
-        padding: theme.spacing(2, 4),
-        minHeight: `calc(100vh - ${props.navbarHeight || 0}px)`,
+        padding: theme.spacing(3, 4),
+        minHeight: "100vh",
         gap: theme.spacing(1),
       }}
     >

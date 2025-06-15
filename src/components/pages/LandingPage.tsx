@@ -16,8 +16,16 @@ const LandingPage = () => {
       }}
     >
       <AppNavBar refs={ref} />
-      <Hero navbarHeight={navbarHeight} />
-      <Features navbarHeight={navbarHeight} />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
+        <Hero navbarHeight={navbarHeight} />
+        <Features navbarHeight={navbarHeight} />
+      </Box>
     </Box>
   );
 };

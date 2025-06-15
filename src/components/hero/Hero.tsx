@@ -27,7 +27,7 @@ const Hero = (props: HeroProps) => {
         }}
       >
         <Typography
-          variant="h3"
+          variant="h4"
           sx={{
             fontWeight: "bold",
             textAlign: "center",
@@ -36,7 +36,7 @@ const Hero = (props: HeroProps) => {
           Track every expense.
         </Typography>
         <Typography
-          variant="h3"
+          variant="h4"
           sx={{
             fontWeight: "bold",
             textAlign: "center",
@@ -49,7 +49,7 @@ const Hero = (props: HeroProps) => {
         <img src="/assets/images/tabby_hero.png" alt="Hero" />
       </Box>
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
           color: theme.palette.text.secondary,
         }}
