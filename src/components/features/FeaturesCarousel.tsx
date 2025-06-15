@@ -44,12 +44,7 @@ interface CustomDotProps {
 const FeatureCarousel = () => {
   const theme = useTheme();
   const CustomDot: React.FC<CustomDotProps> = ({ onClick, ...rest }) => {
-    const {
-      onMove,
-      index,
-      active,
-      carouselState: { currentSlide, deviceType },
-    } = rest;
+    const { active } = rest;
     return (
       <Box
         className={active ? "active" : "inactive"}
