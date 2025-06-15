@@ -67,7 +67,7 @@ const Hero = (props: HeroProps) => {
           cursor: "pointer",
           marginTop: theme.spacing(4),
         }}
-        // onClick={() => (window.location.href = "/app")}
+        onClick={() => window.open("https://t.me/DivydBot", "_blank")}
       >
         <Typography variant="button" sx={{ color: "#fff" }}>
           Launch Tabby
