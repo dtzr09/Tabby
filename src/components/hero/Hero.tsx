@@ -15,7 +15,6 @@ const Hero = (props: HeroProps) => {
         textAlign: "center",
         alignItems: "center",
         padding: theme.spacing(4, 2),
-        height: `calc(100vh - ${props.navbarHeight || 0}px)`,
       }}
     >
       <Box
