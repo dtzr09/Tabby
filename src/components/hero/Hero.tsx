@@ -6,7 +6,6 @@ export interface HeroProps {
 }
 const Hero = (props: HeroProps) => {
   const theme = useTheme();
-  console.log("Hero component rendered with navbarHeight:", props.navbarHeight);
   return (
     <Box
       sx={{
@@ -48,8 +47,6 @@ const Hero = (props: HeroProps) => {
       <Box
         sx={{
           width: "100%",
-          // height: "400px",
-          // maxWidth: "600px",
         }}
       >
         <img

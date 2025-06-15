@@ -2,10 +2,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 import FeatureCarousel from "./FeaturesCarousel";
 
-export interface FeaturesProps {
-  navbarHeight?: number;
-}
-const Features = (props: FeaturesProps) => {
+const Features = () => {
   const theme = useTheme();
   return (
     <Box

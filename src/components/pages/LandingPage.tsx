@@ -24,7 +24,7 @@ const LandingPage = () => {
         }}
       >
         <Hero navbarHeight={navbarHeight} />
-        <Features navbarHeight={navbarHeight} />
+        <Features />
       </Box>
     </Box>
   );
