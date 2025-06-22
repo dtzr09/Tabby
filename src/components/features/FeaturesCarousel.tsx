@@ -112,11 +112,6 @@ const FeatureCarousel = () => {
           next={() => {}}
           previous={() => {}}
           goToSlide={() => {}}
-          carouselState={{
-            totalItems: features.length,
-            currentSlide: 0,
-            deviceType: "",
-          }}
         />
       }
       customDot={

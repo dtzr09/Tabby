@@ -5,9 +5,8 @@ import { useMobile } from "@/hooks/useMobile";
 
 const CustomLeftArrow: React.FC<{
   onClick: () => void;
-  isDevice: boolean;
   fontSize: string;
-}> = ({ onClick, isDevice, fontSize }) => (
+}> = ({ onClick, fontSize }) => (
   <i onClick={() => onClick()} className="custom-left-arrow">
     <ArrowLeftRounded
       fontSize="large"
@@ -19,9 +18,8 @@ const CustomLeftArrow: React.FC<{
 );
 const CustomRightArrow: React.FC<{
   onClick: () => void;
-  isDevice: boolean;
   fontSize: string;
-}> = ({ onClick, isDevice, fontSize }) => {
+}> = ({ onClick, fontSize }) => {
   return (
     <i onClick={() => onClick()} className="custom-right-arrow">
       <ArrowRightRounded
@@ -38,11 +36,6 @@ interface CustomButtonGroupProps {
   next: () => void;
   previous: () => void;
   goToSlide: (slide: number) => void;
-  carouselState: {
-    totalItems: number;
-    currentSlide: number;
-    [key: string]: any;
-  };
 }
 
 const CustomButtonGroup: React.FC<CustomButtonGroupProps> = ({
@@ -62,12 +55,8 @@ const CustomButtonGroup: React.FC<CustomButtonGroupProps> = ({
         bottom: device ? undefined : 0,
       }}
     >
-      <CustomLeftArrow
-        onClick={previous}
-        isDevice={device}
-        fontSize={fontSize}
-      />
-      <CustomRightArrow onClick={next} isDevice={device} fontSize={fontSize} />
+      <CustomLeftArrow onClick={previous} fontSize={fontSize} />
+      <CustomRightArrow onClick={next} fontSize={fontSize} />
     </Box>
   );
 };

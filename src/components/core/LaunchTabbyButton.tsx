@@ -1,4 +1,3 @@
-import { useMobile } from "@/hooks/useMobile";
 import { Typography, useTheme } from "@mui/material";
 import React from "react";
 
@@ -7,7 +6,6 @@ export interface LaunchTabbyButtonProps {
 }
 const LaunchTabbyButton = (props: LaunchTabbyButtonProps) => {
   const theme = useTheme();
-  const { device } = useMobile();
   return (
     <button
       style={{
