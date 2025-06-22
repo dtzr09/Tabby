@@ -1,86 +1,113 @@
-import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
+import { alpha, Box, Chip, Typography, useTheme } from "@mui/material";
+import LaunchTabbyButton from "../core/LaunchTabbyButton";
+import { useMobile } from "@/hooks/useMobile";
+import personas from "@/utils/personas";
 
 export interface HeroProps {
   navbarHeight?: number;
 }
-const Hero = (props: HeroProps) => {
+
+const Hero = ({ navbarHeight = 0 }: HeroProps) => {
   const theme = useTheme();
+  const { device } = useMobile(); // `device` is true for mobile
+
   return (
     <Box
       sx={{
+        height: `calc(100vh - ${navbarHeight}px)`,
         display: "flex",
-        flexDirection: "column",
-        textAlign: "center",
+        flexDirection: device ? "column" : "row",
+        justifyContent: "center",
         alignItems: "center",
-        padding: theme.spacing(4, 2),
-        minHeight: `calc(100vh - ${props.navbarHeight || 0}px)`,
-        height: "100vh",
+        padding: device ? theme.spacing(4, 2) : undefined,
+        textAlign: device ? "center" : "left",
       }}
     >
+      {/* Image Section */}
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Track every expense.
-        </Typography>
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Solo or squad.
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
+          height: device ? "100%" : "auto",
+          width: device ? "100%" : theme.spacing(55),
+          maxHeight: device ? "500px" : "100%",
+          mb: device ? theme.spacing(3) : 0,
         }}
       >
         <img
           src="/assets/images/tabby_hero.png"
           alt="Hero"
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          style={{ objectFit: "contain", width: "100%", height: "100%" }}
         />
       </Box>
-      <Typography
-        variant="body1"
+
+      {/* Text Section */}
+      <Box
         sx={{
-          color: theme.palette.text.secondary,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          maxWidth: device ? "100%" : theme.spacing(70),
+          alignItems: device ? "center" : "flex-start",
+          gap: device ? 1.5 : 2,
         }}
       >
-        Tabby is built for real-life spending - simple for one, smart for
-        groups, and fun all around.
-      </Typography>
-      <button
-        style={{
-          padding: theme.spacing(1, 3),
-          backgroundColor: theme.palette.primary.main,
-          width: "fit-content",
-          color: "#fff",
-          border: "none",
-          borderRadius: theme.spacing(1),
-          cursor: "pointer",
-          marginTop: theme.spacing(4),
-        }}
-        onClick={() => window.open("https://t.me/DivydBot", "_blank")}
-      >
-        <Typography variant="button" sx={{ color: "#fff" }}>
-          Launch Tabby
+        <Typography
+          variant={device ? "h6" : "h5"}
+          fontWeight="bold"
+          sx={{
+            color: "#CB9821",
+          }}
+        >
+          Track with Tabby — like texting your wallet.
         </Typography>
-      </button>
+        <Typography variant={device ? "h4" : "h2"} fontWeight="bold">
+          Track every expense.
+        </Typography>
+        <Typography variant={device ? "h4" : "h2"} fontWeight="bold">
+          Solo or squad.
+        </Typography>
+        <Typography
+          variant={device ? "body1" : "h6"}
+          sx={{ color: theme.palette.text.secondary }}
+        >
+          Tabby is built for real-life spending — simple for one, smart for
+          groups, and fun all around.
+        </Typography>
+
+        <Box
+          sx={{
+            overflow: "hidden",
+            width: "100%",
+            position: "relative", // important
+          }}
+        >
+          <Box
+            sx={{
+              display: "inline-block",
+              whiteSpace: "nowrap",
+              animation: "scrollLeft 120s linear infinite",
+            }}
+          >
+            {[...personas, ...personas].map((label, idx) => (
+              <Chip
+                key={idx}
+                label={label}
+                variant="outlined"
+                sx={{
+                  marginRight: 2,
+                  backgroundColor: alpha(theme.palette.background.paper, 0.4),
+                  borderColor: "transparent",
+                }}
+              />
+            ))}
+          </Box>
+        </Box>
+        <LaunchTabbyButton
+          sx={{
+            marginTop: 12,
+          }}
+        />
+      </Box>
     </Box>
   );
 };

@@ -2,6 +2,8 @@ import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { CustomButtonGroup } from "./customButtonGroups";
+import { useMobile } from "@/hooks/useMobile";
 
 const features = [
   {
@@ -28,6 +30,12 @@ const features = [
       "Fix typos or update entries with a simple command – no complex UI, just fast fixes.",
     image: "assets/images/quick_add_edit.png",
   },
+  {
+    title: "Sync with Notion effortlessly.",
+    description:
+      "Connect Tabby to Notion and log every expense into your personal dashboard automatically. No manual copy-pasting — just link once and you're set.",
+    image: "assets/images/sync_to_notion.png",
+  },
 ];
 
 interface CustomDotProps {
@@ -43,6 +51,7 @@ interface CustomDotProps {
 
 const FeatureCarousel = () => {
   const theme = useTheme();
+  const { device } = useMobile();
   const CustomDot: React.FC<CustomDotProps> = ({ onClick, ...rest }) => {
     const { active } = rest;
     return (
@@ -53,10 +62,11 @@ const FeatureCarousel = () => {
           backgroundColor: active
             ? theme.palette.primary.main
             : theme.palette.grey[400],
-          borderRadius: "100%",
-          width: "8px",
+          borderRadius: active ? "40%" : "100%",
+          width: active ? theme.spacing(3) : theme.spacing(1),
           height: "8px",
           margin: "0 5px",
+          transition: "all 300ms ease-in-out",
         }}
       />
     );
@@ -75,14 +85,14 @@ const FeatureCarousel = () => {
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 1,
+          items: 2,
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
           items: 1,
         },
       }}
-      swipeable={true}
+      swipeable={false}
       draggable={false}
       showDots={true}
       ssr={true}
@@ -90,8 +100,25 @@ const FeatureCarousel = () => {
       customTransition="all .5"
       transitionDuration={500}
       containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
+      removeArrowOnDeviceType={[
+        "desktop",
+        "superLargeDesktop",
+        "tablet",
+        "mobile",
+      ]}
       dotListClass="custom-dot-list-style"
+      customButtonGroup={
+        <CustomButtonGroup
+          next={() => {}}
+          previous={() => {}}
+          goToSlide={() => {}}
+          carouselState={{
+            totalItems: features.length,
+            currentSlide: 0,
+            deviceType: "",
+          }}
+        />
+      }
       customDot={
         <CustomDot
           onClick={function (): void {
@@ -113,26 +140,80 @@ const FeatureCarousel = () => {
           sx={{
             textAlign: "center",
             display: "flex",
-            flexDirection: "column",
+            flexDirection: device ? "column" : "row",
             alignItems: "center",
-            mb: 3,
+            mb: device ? 3 : 0,
           }}
         >
+          {device && (
+            <Box
+              sx={{
+                width: "100%",
+                minHeight: "400px",
+                maxWidth: !device ? "500px" : undefined,
+                height: "100%",
+                p: 2,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={feature.image}
+                alt={feature.title}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
+          )}
           <Box
             sx={{
-              width: "100%",
+              ...(!device
+                ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    textAlign: "left",
+                    gap: 1,
+                    p: theme.spacing(0, 6),
+                  }
+                : {}),
             }}
           >
-            <img
-              src={feature.image}
-              alt={feature.title}
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
-            />
+            <>
+              <Typography variant={device ? "body1" : "h4"} fontWeight={"bold"}>
+                {feature.title}
+              </Typography>
+              <Typography variant={device ? "body2" : "h5"}>
+                {feature.description}
+              </Typography>
+            </>
           </Box>
-          <Typography variant="body1" fontWeight={"bold"}>
-            {feature.title}
-          </Typography>
-          <Typography variant="body2">{feature.description}</Typography>
+          {!device && (
+            <Box
+              sx={{
+                width: "100%",
+                minHeight: "400px",
+                maxWidth: !device ? "400px" : undefined,
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={feature.image}
+                alt={feature.title}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
+          )}
         </Box>
       ))}
     </Carousel>

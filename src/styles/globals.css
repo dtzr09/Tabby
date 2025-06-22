@@ -4,7 +4,8 @@ body {
   margin: 0;
   height: 100%;
   background-color: #171717;
-  color: #ffffff;
+  color: #f8f8ff;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -31,4 +32,13 @@ a:active {
 a:focus,
 a:hover {
   text-decoration: underline !important;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
