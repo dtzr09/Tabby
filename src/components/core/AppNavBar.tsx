@@ -164,7 +164,7 @@ const AppNavBar = (props: AppNavBarProps) => {
             />
           </Box>
         )}
-        {device && (
+        {device ? (
           <IconButton
             size="large"
             edge="start"
@@ -173,7 +173,7 @@ const AppNavBar = (props: AppNavBarProps) => {
           >
             <Menu />
           </IconButton>
-        )}
+        ) : null}
       </Box>
     </AppBar>
   );

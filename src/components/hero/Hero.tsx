@@ -8,9 +8,9 @@ export interface HeroProps {
   navbarHeight?: number;
 }
 
-const Hero = ({ navbarHeight = 0 }: HeroProps) => {
+const Hero = ({ navbarHeight }: HeroProps) => {
   const theme = useTheme();
-  const { device } = useMobile(); // `device` is true for mobile
+  const { device } = useMobile();
 
   return (
     <Box
@@ -20,7 +20,6 @@ const Hero = ({ navbarHeight = 0 }: HeroProps) => {
         flexDirection: device ? "column" : "row",
         justifyContent: "center",
         alignItems: "center",
-        padding: device ? theme.spacing(4, 2) : undefined,
         textAlign: device ? "center" : "left",
       }}
     >
@@ -51,15 +50,17 @@ const Hero = ({ navbarHeight = 0 }: HeroProps) => {
           gap: device ? 1.5 : 2,
         }}
       >
-        <Typography
-          variant={device ? "h6" : "h5"}
-          fontWeight="bold"
-          sx={{
-            color: "#CB9821",
-          }}
-        >
-          Track with Tabby — like texting your wallet.
-        </Typography>
+        {!device && (
+          <Typography
+            variant={device ? "h6" : "h5"}
+            fontWeight="bold"
+            sx={{
+              color: "#CB9821",
+            }}
+          >
+            Track with Tabby — like texting your wallet.
+          </Typography>
+        )}
         <Typography variant={device ? "h4" : "h2"} fontWeight="bold">
           Track every expense.
         </Typography>
@@ -68,7 +69,10 @@ const Hero = ({ navbarHeight = 0 }: HeroProps) => {
         </Typography>
         <Typography
           variant={device ? "body1" : "h6"}
-          sx={{ color: theme.palette.text.secondary }}
+          sx={{
+            color: theme.palette.text.secondary,
+            padding: device ? theme.spacing(2) : 0,
+          }}
         >
           Tabby is built for real-life spending — simple for one, smart for
           groups, and fun all around.

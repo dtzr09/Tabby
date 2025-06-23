@@ -52,7 +52,7 @@ const Faqs = () => {
           display: "flex",
           flexDirection: "column",
           gap: theme.spacing(1),
-          padding: device ? 0 : theme.spacing(0, 40),
+          padding: device ? theme.spacing(0, 4) : theme.spacing(0, 40),
           justifyContent: "center",
         }}
       >
@@ -80,30 +80,46 @@ const Faqs = () => {
             alignItems="flex-start"
           >
             {/* Column 1 */}
-            <Grid size={6}>
-              <Box display="flex" flexDirection="column" gap={1}>
-                {faqs.slice(0, 4).map((faq, idx) => (
-                  <AppAccordion
-                    key={idx}
-                    title={faq.title}
-                    content={faq.description}
-                  />
-                ))}
-              </Box>
-            </Grid>
+            {device ? (
+              <Grid size={12}>
+                <Box display="flex" flexDirection="column" gap={1}>
+                  {faqs.map((faq, idx) => (
+                    <AppAccordion
+                      key={idx}
+                      title={faq.title}
+                      content={faq.description}
+                    />
+                  ))}
+                </Box>
+              </Grid>
+            ) : (
+              <Grid size={6}>
+                <Box display="flex" flexDirection="column" gap={1}>
+                  {faqs.slice(0, 4).map((faq, idx) => (
+                    <AppAccordion
+                      key={idx}
+                      title={faq.title}
+                      content={faq.description}
+                    />
+                  ))}
+                </Box>
+              </Grid>
+            )}
 
             {/* Column 2 */}
-            <Grid size={6}>
-              <Box display="flex" flexDirection="column" gap={1}>
-                {faqs.slice(4, 8).map((faq, idx) => (
-                  <AppAccordion
-                    key={idx + 4}
-                    title={faq.title}
-                    content={faq.description}
-                  />
-                ))}
-              </Box>
-            </Grid>
+            {!device && (
+              <Grid size={6}>
+                <Box display="flex" flexDirection="column" gap={1}>
+                  {faqs.slice(4, 8).map((faq, idx) => (
+                    <AppAccordion
+                      key={idx + 4}
+                      title={faq.title}
+                      content={faq.description}
+                    />
+                  ))}
+                </Box>
+              </Grid>
+            )}
           </Grid>
         </Box>
       </Box>
