@@ -27,7 +27,7 @@ const Hero = ({ navbarHeight }: HeroProps) => {
       <Box
         sx={{
           height: device ? "100%" : "auto",
-          width: device ? theme.spacing(35) : theme.spacing(55),
+          width: device ? theme.spacing(45) : theme.spacing(55),
           maxHeight: device ? "500px" : "100%",
           mb: device ? theme.spacing(3) : 0,
         }}
