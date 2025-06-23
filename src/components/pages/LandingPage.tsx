@@ -4,6 +4,8 @@ import AppNavBar from "../core/AppNavBar";
 import Hero from "../hero/Hero";
 import Features from "../features/Features";
 import useMeasure from "react-use-measure";
+import Faqs from "../faqs/Faqs";
+import Footer from "../footer/Footer";
 
 const LandingPage = () => {
   const [ref, bounds] = useMeasure();
@@ -26,7 +28,15 @@ const LandingPage = () => {
         >
           <Hero navbarHeight={navbarHeight} />
           <Features />
+          <Box
+            sx={{
+              mt: 8,
+            }}
+          >
+            <Faqs />
+          </Box>
         </Box>
+        <Footer />
       </Box>
     </>
   );

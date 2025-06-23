@@ -1,19 +1,20 @@
 import { alpha, Box, Typography, useTheme } from "@mui/material";
 import React from "react";
-import FeatureCarousel from "./FeaturesCarousel";
 import { useMobile } from "@/hooks/useMobile";
+import FeaturesDisplay from "./FeaturesDisplay";
 
 const Features = () => {
   const theme = useTheme();
   const { device } = useMobile();
   return (
-    <section id="features" style={{ height: "100vh" }}>
+    <section
+      id="features"
+      style={{ minHeight: "100vh", paddingTop: theme.spacing(10) }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          // padding: device ? theme.spacing(3, 4) : theme.spacing(15, 25),
-          minHeight: "100vh",
           gap: theme.spacing(1),
         }}
       >
@@ -22,12 +23,12 @@ const Features = () => {
             padding: device ? 0 : theme.spacing(0, 50),
             display: "flex",
             flexDirection: "column",
-            textAlign: "left",
+            textAlign: "center",
             gap: theme.spacing(1),
           }}
         >
           <Typography variant={device ? "h6" : "h5"} fontWeight={"bold"}>
-            No fluff. Just features.
+            Effortless and simple. The features you need.
           </Typography>
           <Typography variant={device ? "h4" : "h3"} fontWeight={"bold"}>
             Less admin. More adventures.
@@ -44,11 +45,11 @@ const Features = () => {
         <Box
           sx={{
             backgroundColor: alpha(theme.palette.background.paper, 0.15),
-            padding: device ? 0 : theme.spacing(3, 50),
+            padding: device ? 0 : theme.spacing(3, 40),
             mt: device ? 0 : 2,
           }}
         >
-          <FeatureCarousel />
+          <FeaturesDisplay />
         </Box>
       </Box>
     </section>

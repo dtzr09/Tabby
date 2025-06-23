@@ -12,8 +12,8 @@ export interface AppNavBarProps {
 
 const NavLinks = [
   { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQs", href: "#faqs" },
+  // { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faqs" },
 ];
 
 const AppNavBar = (props: AppNavBarProps) => {
@@ -87,7 +87,10 @@ const AppNavBar = (props: AppNavBarProps) => {
               marginRight: 22,
             }),
           }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.history.replaceState(null, "", window.location.pathname);
+          }}
         >
           <img
             src={
