@@ -9,7 +9,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      style={{ minHeight: "100vh", paddingTop: device ? 0 : theme.spacing(10) }}
+      style={{ minHeight: "100vh", paddingTop: device ? theme.spacing(5) : theme.spacing(10) }}
     >
       <Box
         sx={{
@@ -20,7 +20,7 @@ const Features = () => {
       >
         <Box
           sx={{
-            padding: device ? theme.spacing(4, 2) : theme.spacing(0, 50),
+            padding: device ? theme.spacing(4, 2, 2, 2) : theme.spacing(0, 50),
             display: "flex",
             flexDirection: "column",
             textAlign: "center",

@@ -54,7 +54,6 @@ const FeaturesDisplay = () => {
             <Box
               sx={{
                 width: "100%",
-                minHeight: "400px",
                 maxWidth: !device ? "400px" : undefined,
                 height: "100%",
                 p: 2,
