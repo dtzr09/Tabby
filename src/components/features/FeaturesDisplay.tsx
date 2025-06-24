@@ -36,7 +36,7 @@ const features = [
   {
     title: "Stats snapshot",
     description:
-      "A clear view of what you and your group have spent and earned, with clear breakdowns by category and members.",
+      "A clear view of what you and your group have spent and earned, with clear breakdowns.",
     image: "assets/images/stats.png",
   },
   {
@@ -66,7 +66,7 @@ const FeaturesDisplay = () => {
             <Box
               sx={{
                 width: "100%",
-                maxWidth: !device ? "400px" : undefined,
+                maxWidth: !device ? "480px" : undefined,
                 height: "100%",
                 p: 2,
                 display: "flex",
@@ -91,7 +91,7 @@ const FeaturesDisplay = () => {
                       display: "flex",
                       flexDirection: "column",
                       gap: 1,
-                      p: theme.spacing(0, 6),
+                      p: theme.spacing(0, 5),
                     }
                   : {}),
               }}

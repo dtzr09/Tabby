@@ -27,7 +27,7 @@ const faqs = [
   {
     title: "What if I mess up an expense?",
     description:
-      "No worries! You can edit or delete any expense anytime. You’ll be able to update the amount, description, and category. For other changes, simply delete and re-add the expense. More flexibility coming your way soon — stay tuned for updates!",
+      "No worries! You can edit or delete any expense anytime. You’ll be able to update the description and category. For other changes, simply delete and re-add the expense. More flexibility coming your way soon — stay tuned for updates!",
   },
   {
     title: "What if I missed logging an older expense?",
