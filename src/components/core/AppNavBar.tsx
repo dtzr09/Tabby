@@ -13,7 +13,7 @@ export interface AppNavBarProps {
 const NavLinks = [
   { label: "Features", href: "#features" },
   // { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faqs" },
+  { label: "FAQs", href: "#faqs" },
 ];
 
 const AppNavBar = (props: AppNavBarProps) => {

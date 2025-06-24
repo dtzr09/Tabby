@@ -16,22 +16,34 @@ const features = [
     image: "assets/images/split_group_expenses.png",
   },
   {
-    title: "Teach it once, and forget it.",
+    title: "Set It Once. Tabby Remembers.",
     description:
       "Tabby remembers your habits. Mark 'McD' as food once - Tabby will remember and auto-categorize it next time you log it.",
     image: "assets/images/learns_as_you_go.png",
-  },
-  {
-    title: "Quick add & edit.",
-    description:
-      "Fix typos or update entries with a simple command - no complex UI, just fast fixes.",
-    image: "assets/images/quick_add_edit.png",
   },
   {
     title: "Sync with Notion effortlessly.",
     description:
       "No manual copy-pasting - just link Tabby to Notion and you're set.",
     image: "assets/images/sync_to_notion.png",
+  },
+  {
+    title: "Settle debts easily",
+    description:
+      "See who owes who and settle up with just a few taps. No more awkward money talk!",
+    image: "assets/images/settledebt.png",
+  },
+  {
+    title: "Stats snapshot",
+    description:
+      "A clear view of what you and your group have spent and earned, with clear breakdowns by category and members.",
+    image: "assets/images/stats.png",
+  },
+  {
+    title: "View & track expenses",
+    description:
+      "Browse all your group and personal expenses, or search by category, date, or keyword — all in one view.",
+    image: "assets/images/viewexpenses.png",
   },
 ];
 

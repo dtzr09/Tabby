@@ -5,14 +5,9 @@ import AppAccordion from "../core/AppAccordion";
 
 const faqs = [
   {
-    title: "Why was Tabby created?",
+    title: "Why Tabby?",
     description:
-      "Tracking expenses is usually a chore — switching between apps, spreadsheets, or forgetting to do it at all. Tabby was built to make tracking feel as easy as chatting with a friend. No apps. No friction. Just chat and go.",
-  },
-  {
-    title: "Why should I use Tabby?",
-    description:
-      "If you've ever needed to split a bill, lost track of spending, or forgotten where your money went - Tabby’s for you. It's low-effort, fast, and lives inside your daily chat.",
+      "Tracking expenses shouldn’t be a chore. Tabby was created to make it effortless — no apps, no spreadsheets, no friction. Whether you’re splitting bills, tracking spending, or just trying to remember where your money went, Tabby lets you do it all in a quick chat. It’s fast, low-effort, and lives where your conversations already happen.",
   },
   {
     title: "Can I track multiple groups or trips?",
@@ -22,7 +17,7 @@ const faqs = [
   {
     title: "Can I change how Tabby categorizes stuff?",
     description:
-      "Totally. If Tabby gets a category wrong or you just want to switch things up, you can easily reassign or rename categories anytime using the settings command. Tabby learns from your preferences too.",
+      "Totally. If Tabby gets a category wrong or you just want to switch things up, you can easily reassign categories anytime using the settings command. Tabby learns from your preferences too.",
   },
   {
     title: "What gets synced to Notion?",
@@ -37,7 +32,17 @@ const faqs = [
   {
     title: "What if I missed logging an older expense?",
     description:
-      "Yes! Just add the date at the end in DD/MM format—like 10 lunch 30/5. Tabby will take care of the rest, no matter when the expense happened.",
+      "Yes! Just add the date at the end in DD/MM format - like 10 lunch 30/5. Tabby will take care of the rest, no matter when the expense happened.",
+  },
+  {
+    title: "How do I invite more people to share expenses?",
+    description:
+      "You can add more members to your group anytime! As long as they’re admins in your Telegram group, just use `/addmembers` to get them set up with Tabby.",
+  },
+  {
+    title: "Can I make partial payments?",
+    description:
+      "Absolutely! Just specify the amount you’re paying, and Tabby will keep track of what’s left. No need to settle everything at once.",
   },
 ];
 
