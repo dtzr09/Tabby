@@ -44,11 +44,17 @@ const faqs = [
     description:
       "Absolutely! Just specify the amount you’re paying, and Tabby will keep track of what’s left. No need to settle everything at once.",
   },
+  {
+    title: "How many Notion templates do we offer?",
+    description:
+      "Three — and they’ve got you covered! One’s for your personal spending, another’s for epic group travels, and the last one handles everyday group expenses (think housemates or team lunches). Tabby picks the right one for you when you sign up — no guesswork needed. More templates are on the way, and soon, you’ll get to choose your favorite!",
+  },
 ];
 
 const Faqs = () => {
   const theme = useTheme();
   const { device } = useMobile();
+  const half = Math.ceil(faqs.length / 2);
 
   return (
     <section id="faqs" style={{ height: "100%", padding: theme.spacing(6, 0) }}>
@@ -100,7 +106,7 @@ const Faqs = () => {
             ) : (
               <Grid size={6}>
                 <Box display="flex" flexDirection="column" gap={1}>
-                  {faqs.slice(0, 4).map((faq, idx) => (
+                  {faqs.slice(0, half).map((faq, idx) => (
                     <AppAccordion
                       key={idx}
                       title={faq.title}
@@ -115,7 +121,7 @@ const Faqs = () => {
             {!device && (
               <Grid size={6}>
                 <Box display="flex" flexDirection="column" gap={1}>
-                  {faqs.slice(4, 8).map((faq, idx) => (
+                  {faqs.slice(half).map((faq, idx) => (
                     <AppAccordion
                       key={idx + 4}
                       title={faq.title}

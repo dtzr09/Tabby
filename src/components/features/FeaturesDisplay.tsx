@@ -22,7 +22,7 @@ const features = [
     image: "assets/images/learns_as_you_go.png",
   },
   {
-    title: "Sync with Notion effortlessly.",
+    title: "Notion",
     description:
       "No manual copy-pasting - just link Tabby to Notion and you're set.",
     image: "assets/images/sync_to_notion.png",
@@ -96,9 +96,26 @@ const FeaturesDisplay = () => {
                   : {}),
               }}
             >
-              <Typography variant="body1" fontWeight={"bold"}>
-                {feature.title}
-              </Typography>
+              {feature.title == "Notion" ? (
+                <Typography variant="body1" fontWeight={"bold"}>
+                  Sync with our{" "}
+                  <a
+                    href="https://pumped-bearberry-47b.notion.site/Viewing-Tabby-Travel-Ledger-21c02ae98613800e853ecf04dc8ccc25?source=copy_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      textDecoration: "underline !important",
+                    }}
+                  >
+                    Notion template
+                  </a>{" "}
+                  effortlessly.
+                </Typography>
+              ) : (
+                <Typography variant="body1" fontWeight={"bold"}>
+                  {feature.title}
+                </Typography>
+              )}
               <Typography variant="body1">{feature.description}</Typography>
             </Box>
           </Box>
