@@ -46,7 +46,7 @@ const RoadmapPage = () => {
             Tabby is still in beta but we are always evolving, and we have big
             plans for the future. Your experience helps shape what it becomes.
             <br />
-            {device ? <br /> : null}
+            <br />
             We collect and tally every feature request to make sure it aligns
             with your needs – so speak up!
           </Typography>

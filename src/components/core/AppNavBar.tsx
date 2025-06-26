@@ -50,7 +50,7 @@ const AppNavBar = (props: AppNavBarProps) => {
         backdropFilter: "blur(24px)",
         justifyContent: "center",
         top: device ? "unset" : theme.spacing(4),
-        bottom: device ? theme.spacing(2) : "unset",
+        bottom: device ? theme.spacing(10) : "unset",
         left: 0,
         right: 0,
         width: "fit-content",
@@ -121,7 +121,7 @@ const AppNavBar = (props: AppNavBarProps) => {
                   }, 0, 0)`
                 : "translate3d(0, 0, 0)",
               transition: "transform 0.5s ease",
-              marginLeft: theme.spacing(20),
+              marginLeft: device ? theme.spacing(16) : theme.spacing(20),
               width: "max-content",
             }}
           >

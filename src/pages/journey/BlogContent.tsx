@@ -70,7 +70,8 @@ const BlogContent = () => {
         }}
       >
         <Typography
-          variant="h6"
+          variant={"h6"}
+          fontSize={device ? 18 : "inherit"}
           sx={{
             mb: 2,
             display: "flex",
@@ -79,7 +80,7 @@ const BlogContent = () => {
             fontWeight: "bold",
           }}
         >
-          {"Hi, I'm Derrick, the creator of Tabby. "}
+          {"Hi, I'm Derrick, the creator of Tabby."}
           <WavingHand
             fontSize="small"
             sx={{
@@ -143,18 +144,22 @@ const BlogContent = () => {
         </Stack>
         <Box
           sx={{
-            position: device ? "block" : "absolute",
+            position: device ? "static" : "absolute",
             width: device ? "100%" : "auto",
             bottom: device ? "unset" : 0,
             right: 0,
             padding: device ? theme.spacing(4, 0, 0) : theme.spacing(3, 6),
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: device ? "flex-end" : "space-between",
+            alignItems: "center",
             gap: 4,
+            fontSize: device ? 12 : theme.typography.body1.fontSize,
+            textAlign: "right",
           }}
         >
           <Typography
             variant={device ? "body2" : "body1"}
+            fontSize={"inherit"}
             fontFamily={"Agrandir"}
             textTransform="uppercase"
             onClick={() => (window.location.href = "/")}
@@ -171,6 +176,7 @@ const BlogContent = () => {
           </Typography>
           <Typography
             variant={device ? "body2" : "body1"}
+            fontSize={"inherit"}
             fontFamily={"Agrandir"}
             textTransform="uppercase"
             onClick={() => (window.location.href = "/roadmap")}
@@ -185,24 +191,27 @@ const BlogContent = () => {
           >
             {"Tabby's Roadmap"}
           </Typography>
-          <Typography
-            variant={device ? "body2" : "body1"}
-            fontFamily={"Agrandir"}
-            textTransform="uppercase"
-            onClick={() =>
-              (window.location.href = "mailto:tabbybot.expenses@gmail.com")
-            }
-            sx={{
-              cursor: "pointer",
-              "&:hover": {
-                textDecoration: "underline",
-                animation: "none",
-              },
-              animation: `pulse 5s ease-in-out infinite`,
-            }}
-          >
-            tabbybot.expenses@gmail.com
-          </Typography>
+          {!device && (
+            <Typography
+              variant={"body1"}
+              fontSize={"inherit"}
+              fontFamily={"Agrandir"}
+              textTransform="uppercase"
+              onClick={() =>
+                (window.location.href = "mailto:tabbybot.expenses@gmail.com")
+              }
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  textDecoration: "underline",
+                  animation: "none",
+                },
+                animation: `pulse 5s ease-in-out infinite`,
+              }}
+            >
+              tabbybot.expenses@gmail.com
+            </Typography>
+          )}
         </Box>
       </Box>
     </Box>

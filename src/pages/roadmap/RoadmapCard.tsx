@@ -17,7 +17,7 @@ const RoadmapCard = (props: RoadmapCardProps) => {
         flexDirection: "column",
         width: "fit-content",
         maxWidth: 400,
-        minHeight: device ? 180 : 190,
+        minHeight: device ? 225 : 190,
         gap: 1,
         padding: device ? theme.spacing(2) : theme.spacing(3),
         borderRadius: 2,
