@@ -31,7 +31,7 @@ function AppBlogNavbar() {
               : "/assets/images/tabby_logo.png"
           }
           alt="tabby_logo"
-          style={{ width: "100%", height: "100%" }}
+          style={{ height: "100%" }}
         />
       </Box>
       <LaunchTabbyButton sx={{ marginTop: 0 }} reduceSize={true} />

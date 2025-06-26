@@ -8,6 +8,7 @@ import { useMobile } from "@/hooks/useMobile";
 const RoadmapPage = () => {
   const theme = useTheme();
   const { device } = useMobile();
+
   return (
     <Box
       sx={{
@@ -45,8 +46,6 @@ const RoadmapPage = () => {
           >
             Tabby is still in beta but we are always evolving, and we have big
             plans for the future. Your experience helps shape what it becomes.
-            <br />
-            <br />
             We collect and tally every feature request to make sure it aligns
             with your needs – so speak up!
           </Typography>
