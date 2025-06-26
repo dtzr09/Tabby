@@ -141,6 +141,11 @@ const BlogContent = () => {
             </Box>{" "}
             one in every group, Tabby was built with you in mind.
           </Typography>
+          <Typography variant="h6">
+            {
+              "And if you’re not planning a trip? That’s okay — it fits into everyday life just as well."
+            }
+          </Typography>
         </Stack>
         <Box
           sx={{
