@@ -11,7 +11,7 @@ import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 
 export interface AppAccordionProps {
   title?: string;
-  content?: string;
+  content?: string | React.ReactNode;
 }
 
 const Accordion = styled((props: AccordionProps) => (

@@ -27,9 +27,8 @@ const Hero = ({ navbarHeight }: HeroProps) => {
       <Box
         sx={{
           height: device ? "100%" : "auto",
-          width: device ? theme.spacing(45) : theme.spacing(55),
+          width: device ? theme.spacing(30) : theme.spacing(55),
           maxHeight: device ? "500px" : "100%",
-          mb: device ? theme.spacing(3) : 0,
         }}
       >
         <img
@@ -56,9 +55,10 @@ const Hero = ({ navbarHeight }: HeroProps) => {
             fontWeight="bold"
             sx={{
               color: "#CB9821",
+              p: device ? theme.spacing(1) : 0,
             }}
           >
-            Track with Tabby — like texting your wallet.
+            Track with Tabby – like texting your wallet.
           </Typography>
         )}
         <Typography variant={device ? "h4" : "h2"} fontWeight="bold">
@@ -71,10 +71,10 @@ const Hero = ({ navbarHeight }: HeroProps) => {
           variant={device ? "body1" : "h6"}
           sx={{
             color: theme.palette.text.secondary,
-            padding: device ? theme.spacing(2) : 0,
+            padding: device ? theme.spacing(1) : 0,
           }}
         >
-          Tabby is built for real-life spending — simple for one, smart for
+          Tabby is built for real-life spending –simple for one, smart for
           groups, and fun all around.
         </Typography>
 

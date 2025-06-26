@@ -3,13 +3,14 @@ import React from "react";
 
 export interface LaunchTabbyButtonProps {
   sx?: React.CSSProperties;
+  reduceSize?: boolean;
 }
 const LaunchTabbyButton = (props: LaunchTabbyButtonProps) => {
   const theme = useTheme();
   return (
     <button
       style={{
-        padding: theme.spacing(1, 3),
+        padding: props.reduceSize ? theme.spacing(1, 2) : theme.spacing(1, 3),
         backgroundColor: theme.palette.primary.main,
         width: "fit-content",
         color: "#fff",
@@ -26,7 +27,7 @@ const LaunchTabbyButton = (props: LaunchTabbyButtonProps) => {
       }}
     >
       <Typography
-        variant="body1"
+        variant={props.reduceSize ? "body2" : "body1"}
         sx={{ color: "#fff" }}
         onClick={() => window.open("https://t.me/divydbot", "_blank")}
       >

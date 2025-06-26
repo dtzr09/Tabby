@@ -17,6 +17,6 @@ const theme = createTheme({
   },
 });
 
-export const white = "#FFFAFA";
+export const white = "#FAF9F6";
 
 export default theme;

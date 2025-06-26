@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, IconButton, Box, useTheme, Typography } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { AppBar, Box, useTheme, Typography } from "@mui/material";
 import { useMobile } from "@/hooks/useMobile";
 import Link from "next/link";
 import LaunchTabbyButton from "./LaunchTabbyButton";
@@ -10,10 +9,11 @@ export interface AppNavBarProps {
   refs: (element: HTMLDivElement | null) => void;
 }
 
-const NavLinks = [
+export const NavLinks = [
   { label: "Features", href: "#features" },
   // { label: "Pricing", href: "#pricing" },
   { label: "FAQs", href: "#faqs" },
+  { label: "Our Story", href: "/journey" },
 ];
 
 const AppNavBar = (props: AppNavBarProps) => {
@@ -23,6 +23,10 @@ const AppNavBar = (props: AppNavBarProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (device) {
+        setShowTrackBtn(true);
+        return;
+      }
       const featuresSection = document.querySelector("#features");
       if (featuresSection) {
         const rect = featuresSection.getBoundingClientRect();
@@ -39,27 +43,27 @@ const AppNavBar = (props: AppNavBarProps) => {
 
   return (
     <AppBar
-      position="sticky"
+      position={device ? "fixed" : "sticky"}
       sx={{
-        backgroundColor: device ? "#171717" : alpha("#ededed", 0.1),
-        padding: theme.spacing(1, 1),
-        ...(!device && {
-          backdropFilter: "blur(24px)",
-          justifyContent: "center",
-          top: theme.spacing(2),
-          left: 0,
-          right: 0,
-          mx: "auto",
-          width: device ? "100%" : "fit-content",
-          borderRadius: device ? 0 : theme.spacing(4),
-          transition: theme.transitions.create(
-            ["width", "padding", "border-radius"],
-            {
-              duration: 800,
-              easing: theme.transitions.easing.easeInOut,
-            }
-          ),
-        }),
+        backgroundColor: alpha("#ededed", 0.1),
+        padding: device ? theme.spacing(0.5, 0.2) : theme.spacing(1, 1),
+        backdropFilter: "blur(24px)",
+        justifyContent: "center",
+        top: device ? "unset" : theme.spacing(4),
+        bottom: device ? theme.spacing(2) : "unset",
+        left: 0,
+        right: 0,
+        width: "fit-content",
+        borderRadius: theme.spacing(4),
+        zIndex: theme.zIndex.appBar,
+        mx: "auto",
+        transition: theme.transitions.create(
+          ["width", "padding", "border-radius"],
+          {
+            duration: 800,
+            easing: theme.transitions.easing.easeInOut,
+          }
+        ),
       }}
       elevation={0}
       ref={props.refs}
@@ -68,10 +72,7 @@ const AppNavBar = (props: AppNavBarProps) => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-
-          ...(device && {
-            width: "100%",
-          }),
+          alignItems: "center",
         }}
       >
         <Box
@@ -84,7 +85,6 @@ const AppNavBar = (props: AppNavBarProps) => {
               width: "100%",
               display: "flex",
               alignItems: "center",
-              marginRight: 22,
             }),
           }}
           onClick={() => {
@@ -99,81 +99,75 @@ const AppNavBar = (props: AppNavBarProps) => {
                 : "/assets/images/tabby_logo.png"
             }
             alt="tabby_logo"
-            style={{ width: "100%", height: "100%" }}
+            style={{ height: "100%" }}
           />
         </Box>
 
-        {!device && (
+        {/* {!device && ( */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
-              flex: 1,
+              flexDirection: "row",
+              transform: showTrackBtn
+                ? `translate3d(-${
+                    device ? theme.spacing(16) : theme.spacing(18)
+                  }, 0, 0)`
+                : "translate3d(0, 0, 0)",
+              transition: "transform 0.5s ease",
+              marginLeft: theme.spacing(20),
+              width: "max-content",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                transform: showTrackBtn
-                  ? `translate3d(-${theme.spacing(18)}, 0, 0)`
-                  : "translate3d(0, 0, 0)",
-                transition: "transform 0.5s ease",
-              }}
-            >
-              {NavLinks.map((link) => (
-                <Box
-                  component={Link}
-                  href={link.href}
-                  key={link.label}
-                  sx={{
-                    color: "white",
-                    textDecoration: "none",
-                    mx: 1,
-                  }}
+            {NavLinks.map((link) => (
+              <Box
+                component={Link}
+                href={link.href}
+                key={link.label}
+                sx={{
+                  textDecoration: "none",
+                  mx: 1,
+                }}
+              >
+                <Typography
+                  variant={device ? "body2" : "body1"}
+                  fontWeight={500}
+                  letterSpacing={".009em"}
                 >
-                  <Typography
-                    variant={device ? "body2" : "body1"}
-                    fontWeight={500}
-                    letterSpacing={".009em"}
-                  >
-                    {link.label}
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
+                  {link.label}
+                </Typography>
+              </Box>
+            ))}
           </Box>
-        )}
+        </Box>
+        {/* )} */}
 
-        {!device && (
-          <Box
+        {/* {!device && ( */}
+        <Box
+          sx={{
+            transform: showTrackBtn ? "translateY(0)" : "translateY(20px)",
+            opacity: showTrackBtn ? 1 : 0,
+            transition: "transform 0.5s ease, opacity 0.5s ease",
+            position: "absolute",
+            right: theme.spacing(1.5),
+            display: showTrackBtn ? "block" : "none",
+          }}
+        >
+          <LaunchTabbyButton
             sx={{
-              transform: showTrackBtn ? "translateY(0)" : "translateY(20px)",
-              opacity: showTrackBtn ? 1 : 0,
-              transition: "transform 0.5s ease, opacity 0.5s ease",
-              position: "absolute",
-              right: theme.spacing(1.5),
+              margin: 0,
+              padding: theme.spacing(1, 2),
+              borderRadius: theme.spacing(4),
             }}
-          >
-            <LaunchTabbyButton
-              sx={{
-                margin: 0,
-                padding: theme.spacing(1, 2),
-                borderRadius: theme.spacing(4),
-              }}
-            />
-          </Box>
-        )}
-        {device ? (
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          >
-            <Menu />
-          </IconButton>
-        ) : null}
+            reduceSize={device || false}
+          />
+        </Box>
       </Box>
     </AppBar>
   );

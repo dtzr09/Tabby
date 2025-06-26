@@ -5,14 +5,14 @@ import AppAccordion from "../core/AppAccordion";
 
 const faqs = [
   {
-    title: "Why Tabby?",
+    title: "Is Tabby free to use?",
     description:
-      "Tracking expenses shouldn’t be a chore. Tabby was created to make it effortless — no apps, no spreadsheets, no friction. Whether you’re splitting bills, tracking spending, or just trying to remember where your money went, Tabby lets you do it all in a quick chat. It’s fast, low-effort, and lives where your conversations already happen.",
+      "Yes! Tabby is free to use — and we plan to keep core features free forever 😺  Right now, you’ll enjoy everything at no cost while we’re in beta!",
   },
   {
     title: "Can I track multiple groups or trips?",
     description:
-      "Yes! You can create as many groups as you need - like 'Japan Trip' or 'Housemates'. Tabby keeps your expenses organized, separated, and synced.",
+      "Absolutely! As a Beta user, you can create as many groups as you like — whether it’s a ‘Japan Trip’ or ‘Housemates’. Tabby keeps everything neat, separate, and in sync 🧳🏠💸.",
   },
   {
     title: "Can I change how Tabby categorizes stuff?",
@@ -40,7 +40,7 @@ const faqs = [
       "You can add more members to your group anytime! As long as they’re admins in your Telegram group, just use `/addmembers` to get them set up with Tabby.",
   },
   {
-    title: "Can I make partial payments?",
+    title: "Can I make partial payments when settling debt?",
     description:
       "Absolutely! Just specify the amount you’re paying, and Tabby will keep track of what’s left. No need to settle everything at once.",
   },
@@ -48,6 +48,24 @@ const faqs = [
     title: "How many Notion templates do we offer?",
     description:
       "Three — and they’ve got you covered! One’s for your personal spending, another’s for epic group travels, and the last one handles everyday group expenses (think housemates or team lunches). Tabby picks the right one for you when you sign up — no guesswork needed. More templates are on the way, and soon, you’ll get to choose your favorite!",
+  },
+  {
+    title: "What if I have more questions?",
+    description: (
+      <>
+        We’re here to help! You can reach us anytime at{" "}
+        <a
+          href="mailto:tabbybot.expenses@gmail.com"
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          tabbybot.expenses@gmail.com
+        </a>
+        . We’re always happy to assist! We’re also setting up a Telegram support
+        chat for added convenience.
+      </>
+    ),
   },
 ];
 
@@ -71,7 +89,7 @@ const Faqs = () => {
           <Typography variant="h3" fontWeight={600}>
             FAQ
           </Typography>
-          <Typography variant="h6" color={theme.palette.text.secondary}>
+          <Typography variant="h6" color={theme.palette.text.secondary} mt={1}>
             Everything you need to know, in one place.
           </Typography>
         </Box>
@@ -81,7 +99,7 @@ const Faqs = () => {
             flexDirection: "column",
             gap: theme.spacing(1),
             justifyContent: "center",
-            mt: 4,
+            mt: device ? 2 : 4,
           }}
         >
           <Grid
