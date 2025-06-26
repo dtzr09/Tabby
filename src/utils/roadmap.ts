@@ -8,6 +8,16 @@ const chips = [
 ];
 export const roadMaps = [
   {
+    title: "Expense Flow Improvements",
+    description:
+      "Editing of expenses' amount and support for late Notion connection.",
+  },
+  {
+    title: "Integration with OCR",
+    description:
+      "Seamlessly snap a picture of your receipt and import it, making expense tracking even easier.",
+  },
+  {
     title: "Spending Reports",
     description:
       "Track your weekly spending and income trends with clear, interactive graphs — making it easier to catch habits and stay on top of your finances.",
@@ -51,10 +61,5 @@ export const roadMaps = [
     title: "More Notion Templates",
     description:
       "More comprehensive templates making it simple to plan and organize your adventures.",
-  },
-  {
-    title: "Integration with OCR",
-    description:
-      "Seamlessly snap a picture of your receipt and import it, making expense tracking even easier.",
   },
 ];
