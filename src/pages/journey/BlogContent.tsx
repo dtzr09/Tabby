@@ -71,7 +71,7 @@ const BlogContent = () => {
       >
         <Typography
           variant={"h6"}
-          fontSize={device ? 18 : "inherit"}
+          fontSize={device ? 18 : theme.typography.h6.fontSize}
           sx={{
             mb: 2,
             display: "flex",
