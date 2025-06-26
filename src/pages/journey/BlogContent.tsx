@@ -2,7 +2,6 @@ import { useMobile } from "@/hooks/useMobile";
 import { WavingHand } from "@mui/icons-material";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
-import useMeasure from "react-use-measure";
 
 const BlogContent = () => {
   const theme = useTheme();
@@ -80,7 +79,7 @@ const BlogContent = () => {
             fontWeight: "bold",
           }}
         >
-          Hi, I'm Derrick, the creator of Tabby.{" "}
+          {"Hi, I'm Derrick, the creator of Tabby. "}
           <WavingHand
             fontSize="small"
             sx={{
@@ -91,39 +90,40 @@ const BlogContent = () => {
 
         <Stack spacing={2}>
           <Typography variant="h6">
-            If you’ve ever been the go-to person for trip expenses or just like
-            keeping things organized — you will know the pain of:
+            {
+              "If you’ve ever been the go-to person for trip expenses or just like keeping things organized — you will know the pain of:"
+            }
           </Typography>
           <Typography variant="h6" fontStyle="italic" color="text.secondary">
-            Opening a separate app just to track expenses.
+            {"Opening a separate app just to track expenses."}
           </Typography>
           <Typography variant="h6" fontStyle="italic" color="text.secondary">
-            Questions like “Who paid for this?” or “How much do I owe?”
+            {"Questions like “Who paid for this?” or “How much do I owe?”"}
           </Typography>
           <Typography variant="h6" fontStyle="italic" color="text.secondary">
-            Crumpled receipts, bank app scrolling, and messy Excel sheets.
+            {"Crumpled receipts, bank app scrolling, and messy Excel sheets."}
           </Typography>
 
           <Typography variant="h6">
-            During a two-week grad trip to New Zealand, my friends and I were
-            too busy exploring to track spending. Flights, Airbnbs, spontaneous
-            food stops — unforgettable moments, but the aftermath? A mess of
-            receipts and bank logs that took hours to sort.
+            {
+              "During a two-week grad trip to New Zealand, my friends and I were too busy exploring to track spending. Flights, Airbnbs, spontaneous food stops — unforgettable moments, but the aftermath? A mess of receipts and bank logs that took hours to sort."
+            }
           </Typography>
 
           <Typography variant="h6">
-            I wanted something simpler, a tool that lived in the apps we already
-            used daily, like Telegram. Something that felt natural, split costs
-            easily, and synced to Notion so we could revisit our trips without
-            the chaos.
+            {
+              "I wanted something simpler, a tool that lived in the apps we already used daily, like Telegram. Something that felt natural, split costs easily, and synced to Notion so we could revisit our trips without the chaos."
+            }
           </Typography>
           <Typography variant="h6">
-            That’s how Tabby was born, a lightweight, chat-based way to track
-            and split expenses where the conversation already happens.
+            {
+              "That’s how Tabby was born, a lightweight, chat-based way to track and split expenses where the conversation already happens."
+            }
           </Typography>
           <Typography variant="h6" fontWeight="bold">
-            No switching apps. No lost receipts. Just better memories —
-            organized where it matters.
+            {
+              "No switching apps. No lost receipts. Just better memories —organized where it matters."
+            }
           </Typography>
           <Typography variant="h6" fontWeight="bold">
             For the{" "}
@@ -183,7 +183,7 @@ const BlogContent = () => {
               animation: `pulse 5s ease-in-out infinite`,
             }}
           >
-            Tabby's Roadmap
+            {"Tabby's Roadmap"}
           </Typography>
           <Typography
             variant={device ? "body2" : "body1"}

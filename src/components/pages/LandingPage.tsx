@@ -1,5 +1,5 @@
 import { Box, CircularProgress } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppNavBar from "../core/AppNavBar";
 import Hero from "../hero/Hero";
 import Features from "../features/Features";
@@ -11,7 +11,7 @@ import { useMobile } from "@/hooks/useMobile";
 const LandingPage = () => {
   const [ref, bounds] = useMeasure();
   const navbarHeight = bounds.height;
-  const { device, width } = useMobile();
+  const { device } = useMobile();
 
   if (device === null) {
     return (

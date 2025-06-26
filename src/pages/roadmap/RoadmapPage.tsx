@@ -35,7 +35,7 @@ const RoadmapPage = () => {
           }}
         >
           <Typography variant="h4" fontWeight={400}>
-            Tabby's Roadmap
+            {"Tabby's Roadmap"}
           </Typography>
           <Typography
             variant="body1"

@@ -1,11 +1,11 @@
-const chips = [
-  "Analytics",
-  "Reports",
-  "Export",
-  "Budget",
-  "Group",
-  "Shared Expenses",
-];
+// const chips = [
+//   "Analytics",
+//   "Reports",
+//   "Export",
+//   "Budget",
+//   "Group",
+//   "Shared Expenses",
+// ];
 export const roadMaps = [
   {
     title: "Expense Flow Improvements",

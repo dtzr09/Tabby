@@ -1,13 +1,12 @@
 import LaunchTabbyButton from "@/components/core/LaunchTabbyButton";
 import { useMobile } from "@/hooks/useMobile";
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
 
 function AppBlogNavbar() {
   const { device } = useMobile();
   const router = useRouter();
-  const theme = useTheme();
   return (
     <Box
       sx={{
