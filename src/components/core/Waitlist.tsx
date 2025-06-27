@@ -15,6 +15,7 @@ import React, { useEffect, useState } from "react";
 
 export interface WaitlistProps {
   fromNavbar?: boolean;
+  fromRoadMap?: boolean;
 }
 const Waitlist = (props: WaitlistProps) => {
   const theme = useTheme();
@@ -57,7 +58,7 @@ const Waitlist = (props: WaitlistProps) => {
     return () => clearTimeout(timer);
   }, [submitted]);
 
-  if (props.fromNavbar)
+  if (props.fromNavbar || props.fromRoadMap)
     return (
       <Button
         variant="contained"
@@ -73,7 +74,7 @@ const Waitlist = (props: WaitlistProps) => {
         onClick={
           props.fromNavbar
             ? () => window.scrollTo({ top: 0, behavior: "smooth" })
-            : handleSubmit
+            : () => (window.location.href = "/")
         }
       >
         <Typography variant="button" sx={{ textTransform: "none" }}>

@@ -1,8 +1,9 @@
-import LaunchTabbyButton from "@/components/core/LaunchTabbyButton";
+// import LaunchTabbyButton from "@/components/core/LaunchTabbyButton";
 import { useMobile } from "@/hooks/useMobile";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
+import Waitlist from "./Waitlist";
 
 function AppBlogNavbar() {
   const { device } = useMobile();
@@ -34,7 +35,8 @@ function AppBlogNavbar() {
           style={{ height: "100%" }}
         />
       </Box>
-      <LaunchTabbyButton sx={{ marginTop: 0 }} reduceSize={true} />
+      {/* <LaunchTabbyButton sx={{ marginTop: 0 }} reduceSize={true} /> */}
+      <Waitlist fromRoadMap={true} />
     </Box>
   );
 }
