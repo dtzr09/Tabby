@@ -19,14 +19,14 @@ export interface WaitlistProps {
 }
 const Waitlist = (props: WaitlistProps) => {
   const theme = useTheme();
-  const [handler, setHandler] = useState("");
+  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const { device } = useMobile();
 
   const handleSubmit = async () => {
-    if (!handler.trim()) {
-      setError("Telegram handle is required.");
+    if (!email.trim()) {
+      setError("Email address is required.");
       return;
     }
     const response = await fetch(
@@ -36,13 +36,13 @@ const Waitlist = (props: WaitlistProps) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({ handler }),
+        body: new URLSearchParams({ email }),
       }
     );
 
     const text = await response.text();
     if (text.toLowerCase() === "success") {
-      setHandler("");
+      setEmail("");
       setSubmitted(true);
     } else {
       setError("Something went wrong. Please try again.");
@@ -99,13 +99,13 @@ const Waitlist = (props: WaitlistProps) => {
       {!submitted ? (
         <FormControl fullWidth error={error !== ""}>
           <Input
-            placeholder="Enter your telegram handle"
+            placeholder="Enter your email address"
             type="text"
             fullWidth
             disableUnderline
-            value={handler}
+            value={email}
             onChange={(e) => {
-              setHandler(e.target.value);
+              setEmail(e.target.value);
               if (error !== "") setError(""); // Clear error on input change
             }}
             sx={{
