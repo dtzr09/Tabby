@@ -1,8 +1,9 @@
 import React from "react";
 import { alpha, Box, Chip, Typography, useTheme } from "@mui/material";
-import LaunchTabbyButton from "../core/LaunchTabbyButton";
+// import LaunchTabbyButton from "../core/LaunchTabbyButton";
 import { useMobile } from "@/hooks/useMobile";
 import personas from "@/utils/personas";
+import Waitlist from "../core/Waitlist";
 
 export interface HeroProps {
   navbarHeight?: number;
@@ -26,7 +27,6 @@ const Hero = ({ navbarHeight }: HeroProps) => {
       {/* Image Section */}
       <Box
         sx={{
-          height: device ? "100%" : "auto",
           width: device ? theme.spacing(30) : theme.spacing(55),
           maxHeight: device ? "500px" : "100%",
         }}
@@ -34,7 +34,7 @@ const Hero = ({ navbarHeight }: HeroProps) => {
         <img
           src="/assets/images/tabby_hero.png"
           alt="Hero"
-          style={{ objectFit: "contain", width: "100%", height: "100%" }}
+          style={{ objectFit: "contain", width: "100%" }}
         />
       </Box>
 
@@ -106,11 +106,12 @@ const Hero = ({ navbarHeight }: HeroProps) => {
             ))}
           </Box>
         </Box>
-        <LaunchTabbyButton
+        {/* <LaunchTabbyButton
           sx={{
             marginTop: 12,
           }}
-        />
+        /> */}
+        <Waitlist />
       </Box>
     </Box>
   );

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { AppBar, Box, useTheme, Typography } from "@mui/material";
 import { useMobile } from "@/hooks/useMobile";
 import Link from "next/link";
-import LaunchTabbyButton from "./LaunchTabbyButton";
+// import LaunchTabbyButton from "./LaunchTabbyButton";
 import { alpha } from "@mui/material/styles";
+import Waitlist from "./Waitlist";
 
 export interface AppNavBarProps {
   refs: (element: HTMLDivElement | null) => void;
@@ -159,14 +160,15 @@ const AppNavBar = (props: AppNavBarProps) => {
             display: showTrackBtn ? "block" : "none",
           }}
         >
-          <LaunchTabbyButton
+          {/* <LaunchTabbyButton
             sx={{
               margin: 0,
               padding: theme.spacing(1, 2),
               borderRadius: theme.spacing(4),
             }}
             reduceSize={device || false}
-          />
+          /> */}
+          <Waitlist fromNavbar={true} />
         </Box>
       </Box>
     </AppBar>
