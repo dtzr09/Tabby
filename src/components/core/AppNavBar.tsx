@@ -118,7 +118,7 @@ const AppNavBar = (props: AppNavBarProps) => {
               flexDirection: "row",
               transform: showTrackBtn
                 ? `translate3d(-${
-                    device ? theme.spacing(16) : theme.spacing(18)
+                    device ? theme.spacing(14) : theme.spacing(17)
                   }, 0, 0)`
                 : "translate3d(0, 0, 0)",
               transition: "transform 0.5s ease",
@@ -156,7 +156,8 @@ const AppNavBar = (props: AppNavBarProps) => {
             opacity: showTrackBtn ? 1 : 0,
             transition: "transform 0.5s ease, opacity 0.5s ease",
             position: "absolute",
-            right: theme.spacing(1.5),
+            // right: theme.spacing(1.5),
+            right: theme.spacing(0.8),
             display: showTrackBtn ? "block" : "none",
           }}
         >
