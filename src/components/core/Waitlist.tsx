@@ -30,7 +30,7 @@ const Waitlist = (props: WaitlistProps) => {
       return;
     }
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbxwcBOvnecXcGwOMoNANuZTagd35kWKZqHTHZDnXDQhMjnRhFjTeXoLKpkhbglKHaU/exec",
+      "https://script.google.com/macros/s/AKfycbx3_oghQjJVsH-1cwmKUfJS5cEVQYAArTIGtUSNKb6ILzvGq31euJX6vlWJCaFIa8AdRQ/exec",
       {
         method: "POST",
         headers: {
