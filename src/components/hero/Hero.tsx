@@ -74,7 +74,7 @@ const Hero = ({ navbarHeight }: HeroProps) => {
             padding: device ? theme.spacing(1) : 0,
           }}
         >
-          Tabby is built for real-life spending –simple for one, smart for
+          Tabby is built for real-life spending – simple for one, smart for
           groups, and fun all around.
         </Typography>
 
@@ -113,6 +113,7 @@ const Hero = ({ navbarHeight }: HeroProps) => {
         /> */}
         <Waitlist />
       </Box>
+      
     </Box>
   );
 };
