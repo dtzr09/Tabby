@@ -2,6 +2,8 @@ import { useMobile } from "@/hooks/useMobile";
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
 import AppAccordion from "../core/AppAccordion";
+import { useMediaQuery } from "usehooks-ts";
+import { headerFontSize, subHeaderFontSize } from "@/styles/static";
 
 const faqs = [
   {
@@ -73,23 +75,41 @@ const Faqs = () => {
   const theme = useTheme();
   const { device } = useMobile();
   const half = Math.ceil(faqs.length / 2);
+  const isMdAndBelow = useMediaQuery("(max-width:800px)");
 
   return (
-    <section id="faqs" style={{ height: "100%", padding: theme.spacing(6, 0) }}>
+    <section
+      id="faqs"
+      style={{
+        height: "100%",
+        padding: theme.spacing(6, 0),
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           gap: theme.spacing(1),
-          padding: device ? theme.spacing(0, 4) : theme.spacing(0, 40),
-          justifyContent: "center",
+          maxWidth: {
+            xs: "90%",
+            lg: "70%",
+            xl: "65%",
+          },
         }}
       >
         <Box>
-          <Typography variant="h3" fontWeight={600}>
+          <Typography variant="h3" fontWeight={600} fontSize={headerFontSize}>
             FAQ
           </Typography>
-          <Typography variant="h6" color={theme.palette.text.secondary} mt={1}>
+          <Typography
+            variant="h6"
+            color={theme.palette.text.secondary}
+            mt={1}
+            fontSize={subHeaderFontSize}
+          >
             Everything you need to know, in one place.
           </Typography>
         </Box>
@@ -109,7 +129,7 @@ const Faqs = () => {
             alignItems="flex-start"
           >
             {/* Column 1 */}
-            {device ? (
+            {isMdAndBelow ? (
               <Grid size={12}>
                 <Box display="flex" flexDirection="column" gap={1}>
                   {faqs.map((faq, idx) => (
@@ -136,7 +156,7 @@ const Faqs = () => {
             )}
 
             {/* Column 2 */}
-            {!device && (
+            {!isMdAndBelow && (
               <Grid size={6}>
                 <Box display="flex" flexDirection="column" gap={1}>
                   {faqs.slice(half).map((faq, idx) => (

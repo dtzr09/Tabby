@@ -5,6 +5,8 @@ import Link from "next/link";
 // import LaunchTabbyButton from "./LaunchTabbyButton";
 import { alpha } from "@mui/material/styles";
 import Waitlist from "./Waitlist";
+import { navFontSize } from "@/styles/static";
+import { useMediaQuery } from "usehooks-ts";
 
 export interface AppNavBarProps {
   refs: (element: HTMLDivElement | null) => void;
@@ -24,10 +26,10 @@ const AppNavBar = (props: AppNavBarProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (device) {
-        setShowTrackBtn(true);
-        return;
-      }
+      // if (device) {
+      //   setShowTrackBtn(true);
+      //   return;
+      // }
       const featuresSection = document.querySelector("#features");
       if (featuresSection) {
         const rect = featuresSection.getBoundingClientRect();
@@ -42,16 +44,20 @@ const AppNavBar = (props: AppNavBarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [showTrackBtn]);
 
+  const aboveMedium = useMediaQuery(
+    `(min-width: ${theme.breakpoints.values.lg}px)`
+  );
+
   return (
     <AppBar
-      position={device ? "fixed" : "sticky"}
+      position={theme.breakpoints.down("md") ? "fixed" : "sticky"}
       sx={{
         backgroundColor: alpha("#ededed", 0.1),
         padding: device ? theme.spacing(0.5, 0.2) : theme.spacing(1, 1),
         backdropFilter: "blur(24px)",
         justifyContent: "center",
-        top: device ? "unset" : theme.spacing(4),
-        bottom: device ? theme.spacing(2) : "unset",
+        top: aboveMedium ? theme.spacing(4) : "unset",
+        bottom: aboveMedium ? "unset" : theme.spacing(2),
         left: 0,
         right: 0,
         width: "fit-content",
@@ -117,12 +123,19 @@ const AppNavBar = (props: AppNavBarProps) => {
               display: "flex",
               flexDirection: "row",
               transform: showTrackBtn
-                ? `translate3d(-${
-                    device ? theme.spacing(14) : theme.spacing(17)
-                  }, 0, 0)`
+                ? {
+                    xs: `translate3d(-${theme.spacing(16)}, 0, 0)`,
+                    sm: `translate3d(-${theme.spacing(18)}, 0, 0)`,
+                    md: `translate3d(-${theme.spacing(18)}, 0, 0)`,
+                  }
                 : "translate3d(0, 0, 0)",
               transition: "transform 0.5s ease",
-              marginLeft: device ? theme.spacing(16) : theme.spacing(20),
+              marginLeft: {
+                xs: theme.spacing(18),
+                sm: theme.spacing(20),
+                md: theme.spacing(22),
+                lg: theme.spacing(25),
+              },
               width: "max-content",
             }}
           >
@@ -140,6 +153,7 @@ const AppNavBar = (props: AppNavBarProps) => {
                   variant={device ? "body2" : "body1"}
                   fontWeight={500}
                   letterSpacing={".009em"}
+                  fontSize={navFontSize}
                 >
                   {link.label}
                 </Typography>
@@ -156,7 +170,6 @@ const AppNavBar = (props: AppNavBarProps) => {
             opacity: showTrackBtn ? 1 : 0,
             transition: "transform 0.5s ease, opacity 0.5s ease",
             position: "absolute",
-            // right: theme.spacing(1.5),
             right: theme.spacing(0.8),
             display: showTrackBtn ? "block" : "none",
           }}

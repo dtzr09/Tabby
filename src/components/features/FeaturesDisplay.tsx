@@ -1,4 +1,5 @@
 import { useMobile } from "@/hooks/useMobile";
+import { descriptionFontSize, titleFontSize } from "@/styles/static";
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
 
@@ -17,8 +18,7 @@ const features = [
   },
   {
     title: "Set It Once. Tabby Remembers.",
-    description:
-      "Tabby remembers your habits. Mark 'McD' as food once - Tabby will remember and auto-categorize it next time you log it.",
+    description: "Tabby learns your tags - mark it once, and it's remembered.",
     image: "assets/images/learns_as_you_go.png",
   },
   {
@@ -57,7 +57,7 @@ const features = [
   {
     title: "View & track expenses",
     description:
-      "Browse all your group and personal expenses, or search by category, date, or keyword — all in one view.",
+      "Browse all your group and personal expenses, or search by category, date, or keyword - all in one view.",
     image: "assets/images/viewexpenses.png",
   },
 ];
@@ -65,28 +65,55 @@ const features = [
 const FeaturesDisplay = () => {
   const { device } = useMobile();
   const theme = useTheme();
+
   return (
     <Grid container spacing={1} justifyContent="center" alignItems="center">
       {features.map((feature, idx) => (
-        <Grid size={device ? 12 : 4} key={idx}>
+        <Grid
+          // size={device ? 12 : 4}
+          size={{
+            xs: 12,
+            sm: 12,
+            md: 6,
+            lg: 4,
+          }}
+          key={idx}
+          sx={{
+            "@media (min-width:1536px) and (max-width:1800px)": {
+              flexBasis: "33.33%",
+              maxWidth: "32%",
+            },
+            [theme.breakpoints.up("xl")]: {
+              flexBasis: "25%",
+              maxWidth: "24%",
+            },
+          }}
+        >
           <Box
             sx={{
               textAlign: "center",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              mb: device ? 3 : 0,
             }}
           >
             <Box
               sx={{
                 width: "100%",
-                maxWidth: !device ? "480px" : undefined,
+                p: {
+                  xs: theme.spacing(1, 5),
+                  sm: theme.spacing(1, 10),
+                  md: 2,
+                  xl: theme.spacing(0, 2),
+                },
                 height: "100%",
-                p: 2,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+
+                "@media (min-width:1536px) and (max-width:2360px)": {
+                  p: 1,
+                },
               }}
             >
               <img
@@ -94,7 +121,6 @@ const FeaturesDisplay = () => {
                 alt={typeof feature.title === "string" ? feature.title : ""}
                 style={{
                   width: "100%",
-                  height: "100%",
                   objectFit: "contain",
                 }}
               />
@@ -106,15 +132,42 @@ const FeaturesDisplay = () => {
                       display: "flex",
                       flexDirection: "column",
                       gap: 1,
-                      p: theme.spacing(0, 3),
+                      "@media (min-width:1536px) and (max-width:2200px)": {
+                        p: theme.spacing(2, 1),
+                      },
                     }
                   : {}),
+                minHeight: {
+                  sm: theme.spacing(18),
+                  md: theme.spacing(20),
+                  xl: theme.spacing(24),
+                },
+                maxWidth: {
+                  xs: theme.spacing(70),
+                  lg: theme.spacing(56),
+                  xl: theme.spacing(65),
+                },
+                p: {
+                  xs: theme.spacing(2, 4),
+                  md: theme.spacing(1, 0),
+                  sm: theme.spacing(2, 0),
+                  xl: theme.spacing(2, 1),
+                },
+                display: "flex",
+                flexDirection: "column",
+                gap: 1,
               }}
             >
-              <Typography variant="body1" fontWeight={"bold"}>
+              <Typography
+                variant="body1"
+                fontWeight={"bold"}
+                fontSize={titleFontSize}
+              >
                 {feature.title}
               </Typography>
-              <Typography variant="body1">{feature.description}</Typography>
+              <Typography variant="body1" fontSize={descriptionFontSize}>
+                {feature.description}
+              </Typography>
             </Box>
           </Box>
         </Grid>

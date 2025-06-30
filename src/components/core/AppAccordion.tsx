@@ -8,6 +8,7 @@ import {
 import React from "react";
 import { Add } from "@mui/icons-material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
+import { descriptionFontSize, titleFontSize } from "@/styles/static";
 
 export interface AppAccordionProps {
   title?: string;
@@ -34,10 +35,14 @@ const AppAccordion: React.FC<AppAccordionProps> = ({ title, content }) => {
   return (
     <Accordion>
       <AccordionSummary expandIcon={<Add />}>
-        <Typography>{title}</Typography>
+        <Typography variant="h6" fontSize={titleFontSize}>
+          {title}
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>{content}</Typography>
+        <Typography variant="subtitle2" fontSize={descriptionFontSize}>
+          {content}
+        </Typography>
       </AccordionDetails>
     </Accordion>
   );
