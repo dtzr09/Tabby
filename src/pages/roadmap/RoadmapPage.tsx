@@ -4,6 +4,11 @@ import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
 import RoadmapCard from "./RoadmapCard";
 import { useMobile } from "@/hooks/useMobile";
+import {
+  headerFontSize,
+  subHeaderFontSize,
+  titleFontSize,
+} from "@/styles/static";
 
 const RoadmapPage = () => {
   const theme = useTheme();
@@ -21,7 +26,11 @@ const RoadmapPage = () => {
       <AppBlogNavbar />
       <Box
         sx={{
-          padding: device ? 0 : theme.spacing(0, 40),
+          padding: {
+            sm: theme.spacing(0, 5),
+            lg: theme.spacing(0, 5),
+            xl: theme.spacing(0, 35),
+          },
           display: "flex",
           flexDirection: "column",
           gap: theme.spacing(1),
@@ -31,17 +40,18 @@ const RoadmapPage = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(1),
+            gap: 0.5,
             mt: 4,
           }}
         >
-          <Typography variant="h4" fontWeight={400}>
-            {"Tabby's Roadmap"}
+          <Typography variant="h4" fontWeight={500}>
+            Tabby's Roadmap
           </Typography>
           <Typography
             variant="body1"
+            fontSize={titleFontSize}
             sx={{
-              padding: theme.spacing(2, 0),
+              padding: theme.spacing(1, 0),
             }}
           >
             Tabby is still in beta but we are always evolving, and we have big
@@ -49,13 +59,13 @@ const RoadmapPage = () => {
             We collect and tally every feature request to make sure it aligns
             with your needs – so speak up!
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" fontSize={titleFontSize}>
             Email us at{" "}
             <Box component="a" href="mailto:tabbybot.expenses@gmail.com">
               <Typography
                 variant="body1"
                 component="span"
-                sx={{ textDecoration: "underline" }}
+                sx={{ textDecoration: "underline", fontSize: titleFontSize }}
               >
                 tabbybot.expenses@gmail.com
               </Typography>
@@ -65,7 +75,7 @@ const RoadmapPage = () => {
         </Box>
         <Grid container spacing={2} sx={{ marginTop: theme.spacing(2) }}>
           {roadMaps.map((roadMap, index) => (
-            <Grid key={index} size={device ? 6 : 3}>
+            <Grid key={index} size={{ xs: 6, sm: 6, md: 4, lg: 3 }}>
               <RoadmapCard
                 title={roadMap.title}
                 description={roadMap.description}

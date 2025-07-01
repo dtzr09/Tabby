@@ -1,4 +1,4 @@
-import { descriptionFontSize, navFontSize } from "@/styles/static";
+import { navFontSize } from "@/styles/static";
 import { OpenInNew } from "@mui/icons-material";
 import {
   alpha,
@@ -12,6 +12,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import useMeasure from "react-use-measure";
 
 export interface WaitlistProps {
   fromNavbar?: boolean;
@@ -22,6 +23,7 @@ const Waitlist = (props: WaitlistProps) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [ref, bounds] = useMeasure();
 
   const handleSubmit = async () => {
     if (!email.trim()) {
@@ -97,10 +99,13 @@ const Waitlist = (props: WaitlistProps) => {
         display: "flex",
         flexDirection: "column",
         gap: 1,
-        minWidth: theme.spacing(50),
+        minWidth: {
+          xs: theme.spacing(20),
+          sm: theme.spacing(20),
+        },
         width: "100%",
         maxWidth: {
-          xs: theme.spacing(70),
+          xs: theme.spacing(50),
           sm: theme.spacing(70),
           md: theme.spacing(80),
           lg: theme.spacing(60),
@@ -115,8 +120,8 @@ const Waitlist = (props: WaitlistProps) => {
           boxSizing: "border-box",
           alignItems: "center",
           justifyContent: "center",
-          padding: {
-            xs: theme.spacing(2, 1),
+          paddingTop: {
+            xs: 1,
             sm: theme.spacing(2, 2),
             md: 0,
           },
@@ -142,19 +147,26 @@ const Waitlist = (props: WaitlistProps) => {
                 borderRadius: theme.spacing(1),
                 "&.MuiInput-root": {
                   padding: theme.spacing(1, 0, 1, 2),
+                  height: bounds.height,
                   fontSize: navFontSize,
                 },
               }}
               endAdornment={
                 <InputAdornment position="end">
                   <Button
+                    ref={ref}
                     variant="contained"
                     color="primary"
                     fullWidth
                     size="small"
                     onClick={handleSubmit}
                     sx={{
-                      padding: theme.spacing(1.5, 4),
+                      padding: {
+                        xs: theme.spacing(1, 2),
+                        sm: theme.spacing(1, 3),
+                        md: theme.spacing(1, 2),
+                        lg: theme.spacing(1, 3),
+                      },
                       "&.Mui-disabled": {
                         backgroundColor: alpha(
                           theme.palette.text.secondary,
@@ -210,13 +222,14 @@ const Waitlist = (props: WaitlistProps) => {
             md: "center",
             lg: "left",
           },
+          alignItems: "center",
           color: theme.palette.text.secondary,
         }}
       >
         <Typography
           variant="caption"
           sx={{
-            fontSize: descriptionFontSize,
+            fontSize: navFontSize,
           }}
         >
           Follow @taydev_io for updates

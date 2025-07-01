@@ -124,14 +124,14 @@ const AppNavBar = (props: AppNavBarProps) => {
               flexDirection: "row",
               transform: showTrackBtn
                 ? {
-                    xs: `translate3d(-${theme.spacing(16)}, 0, 0)`,
+                    xs: `translate3d(-${theme.spacing(13)}, 0, 0)`,
                     sm: `translate3d(-${theme.spacing(18)}, 0, 0)`,
                     md: `translate3d(-${theme.spacing(18)}, 0, 0)`,
                   }
                 : "translate3d(0, 0, 0)",
               transition: "transform 0.5s ease",
               marginLeft: {
-                xs: theme.spacing(18),
+                xs: theme.spacing(14),
                 sm: theme.spacing(20),
                 md: theme.spacing(22),
                 lg: theme.spacing(25),

@@ -1,40 +1,86 @@
 import { useMobile } from "@/hooks/useMobile";
+import {
+  blogContentFontSize,
+  blogNavFontSize,
+  largeFontSize,
+} from "@/styles/static";
 import { WavingHand } from "@mui/icons-material";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
+import useMeasure from "react-use-measure";
+import { useMediaQuery } from "usehooks-ts";
 
 const BlogContent = () => {
   const theme = useTheme();
   const { device } = useMobile();
+  const [ref, bounds] = useMeasure();
+  const belowMedium = useMediaQuery("(max-width: 800px)");
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: device ? "column" : "row",
+        flexDirection: {
+          xs: "column",
+          lg: "row",
+        },
         width: "100%",
         gap: 2,
+        "@media(max-width: 1380px)": {
+          flexDirection: "column",
+          position: "relative",
+        },
       }}
     >
       <Box
         sx={{
           display: "flex",
-          flexDirection: device ? "column-reverse" : "column",
-          alignItems: "left",
+          flexDirection: {
+            xs: "column-reverse",
+            lg: "column",
+          },
+          justifyContent: {
+            xs: "center",
+            lg: "left",
+            // xl: "flex-start",
+          },
           gap: 1,
-          pl: device ? 0 : theme.spacing(2),
-          maxWidth: device ? "100vw" : "50%",
+          maxWidth: {
+            xs: "100vw",
+            lg: "50vw",
+          },
+          "@media(max-width: 1380px)": {
+            flexDirection: "column-reverse",
+            justifyContent: "center",
+            maxWidth: "100vw",
+            alignItems: "center",
+          },
         }}
       >
         <Box
           sx={{
-            padding: device ? theme.spacing(0, 3) : 0,
-            width: device ? "100vw" : 900,
-            height: device ? theme.spacing(45) : 600,
-            borderRadius: 2,
+            padding: {
+              xs: theme.spacing(0, 2),
+              sm: theme.spacing(0, 2),
+              md: theme.spacing(0, 3),
+              lg: theme.spacing(0, 4),
+            },
+            width: {
+              xs: "100vw",
+              sm: "80vw",
+              lg: "50vw",
+            },
             overflow: "hidden",
             position: "relative",
             flexShrink: 0,
-            mt: device ? 0 : 8,
+            mt: {
+              xs: 3,
+              md: 3,
+              lg: 8,
+            },
+            "@media(min-width: 1200px) and (max-width: 1380px)": {
+              width: "75vw",
+              mt: 3,
+            },
           }}
         >
           <img
@@ -45,20 +91,29 @@ const BlogContent = () => {
               height: "100%",
               objectFit: "cover",
               objectPosition: "bottom center", // focus on lower part
-              borderRadius: device ? 5 : 2,
+              borderRadius: theme.spacing(1),
             }}
           />
         </Box>
+
         <Typography
           variant="h1"
-          fontSize={device ? 58 : 120}
+          fontSize={largeFontSize}
           fontWeight="bold"
           sx={{
             fontFamily: "BostonAngelBold",
             lineHeight: 1.1,
-            textAlign: device ? "center" : "left",
-            mt: device ? 2 : 0,
-            padding: device ? theme.spacing(0, 1) : 0,
+            mt: {
+              xs: 2,
+              sm: 2,
+              md: 0,
+            },
+            "@media(min-width: 900px) and (max-width: 1380px)": {
+              mt: 8,
+            },
+            padding: {
+              lg: theme.spacing(0, 0, 0, 4),
+            },
           }}
         >
           Why I Created Tabby?
@@ -66,29 +121,47 @@ const BlogContent = () => {
       </Box>
       <Box
         sx={{
-          padding: device ? theme.spacing(4, 3) : theme.spacing(8, 30, 0, 6),
+          padding: {
+            xs: theme.spacing(3, 3, 0),
+            sm: theme.spacing(4, 10, 0),
+            md: theme.spacing(4, 15, 0),
+            lg: theme.spacing(8, 3, 0, 0),
+            xl: theme.spacing(8, 40, 0, 0),
+          },
+          paddingBottom: `calc(${bounds.height}px + ${theme.spacing(
+            10
+          )}) !important`,
+
+          "@media (min-width: 1200px) and (max-width:1380px)": {
+            padding: theme.spacing(5, 20, 0, 20),
+          },
+          "@media (min-width:1536px) and (max-width:2015px)": {
+            paddingRight: theme.spacing(4),
+          },
+          "@media (min-width:2015px) and (max-width:2500px)": {
+            paddingRight: theme.spacing(20),
+          },
+          "& .MuiTypography-root": {
+            fontSize: blogContentFontSize,
+          },
+          maxWidth: {
+            xs: "100vw",
+            xl: "70vw",
+          },
         }}
       >
         <Typography
-          variant={"h6"}
-          fontSize={device ? 18 : theme.typography.h6.fontSize}
+          variant="h6"
           sx={{
             mb: 2,
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
             fontWeight: "bold",
           }}
         >
-          {"Hi, I'm Derrick, the creator of Tabby."}
-          <WavingHand
-            fontSize="small"
-            sx={{
-              color: "#CB9821",
-            }}
-          />
+          Hi, I'm Derrick, the creator of Tabby.{" "}
+          <Box component="span" sx={{ display: "inline-block", ml: 1 }}>
+            <WavingHand fontSize="small" sx={{ color: "#CB9821" }} />
+          </Box>
         </Typography>
-
         <Stack spacing={2}>
           <Typography variant="h6">
             {
@@ -123,7 +196,7 @@ const BlogContent = () => {
           </Typography>
           <Typography variant="h6" fontWeight="bold">
             {
-              "No switching apps. No lost receipts. Just better memories —organized where it matters."
+              "No switching apps. No lost receipts. Just better memories - organized where it matters."
             }
           </Typography>
           <Typography variant="h6" fontWeight="bold">
@@ -143,22 +216,52 @@ const BlogContent = () => {
           </Typography>
           <Typography variant="h6">
             {
-              "And if you’re not planning a trip? That’s okay — it fits into everyday life just as well."
+              "And if you’re not planning a trip? That’s okay - it fits into everyday life just as well."
             }
           </Typography>
         </Stack>
         <Box
           sx={{
-            position: device ? "static" : "absolute",
-            width: device ? "100%" : "auto",
-            bottom: device ? "unset" : 0,
-            right: 0,
-            padding: device ? theme.spacing(4, 0, 0) : theme.spacing(3, 6),
+            position: "absolute",
+            width: {
+              xs: "auto",
+              md: "auto",
+            },
+            bottom: {
+              xs: 0,
+              sm: 0,
+              xl: theme.spacing(2),
+            },
+            right: {
+              xs: 0,
+              xl: theme.spacing(4),
+            },
+            "@media (min-width:1200px) and (max-width:1380px)": {
+              left: 0,
+              right: "auto",
+            },
+            "@media (min-width:1536px) and (max-width:1780px)": {
+              left: 0,
+              right: "auto",
+            },
+            "@media(min-width: 800px) and (max-width: 1380px)": {
+              position: "absolute",
+              bottom: 0,
+              right: 0,
+              left: "auto",
+            },
+            padding: {
+              xs: theme.spacing(3),
+              md: theme.spacing(3, 6),
+              lg: 0,
+            },
             display: "flex",
             justifyContent: device ? "flex-end" : "space-between",
             alignItems: "center",
             gap: 4,
-            fontSize: device ? 12 : theme.typography.body1.fontSize,
+            "& .MuiTypography-root": {
+              fontSize: blogNavFontSize,
+            },
             textAlign: "right",
           }}
         >
@@ -179,7 +282,9 @@ const BlogContent = () => {
           >
             Home
           </Typography>
+
           <Typography
+            ref={ref}
             variant={device ? "body2" : "body1"}
             fontSize={"inherit"}
             fontFamily={"Agrandir"}
@@ -196,7 +301,7 @@ const BlogContent = () => {
           >
             {"Tabby's Roadmap"}
           </Typography>
-          {!device && (
+          {!belowMedium && (
             <Typography
               variant={"body1"}
               fontSize={"inherit"}

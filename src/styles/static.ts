@@ -31,7 +31,27 @@ export const descriptionFontSize = {
 };
 
 export const navFontSize = {
-  xs: "1rem",
+  xs: "0.8rem",
   sm: "1.1rem",
   md: "1.2rem",
+};
+
+export const largeFontSize = {
+  xs: "2.4rem",
+  sm: "4rem",
+  md: "5.5rem",
+  lg: "6rem",
+  xl: "7rem",
+};
+
+export const blogContentFontSize = {
+  xs: "1.2rem",
+  sm: "1.3rem",
+  md: "1.4rem",
+  lg: "1.3rem",
+};
+
+export const blogNavFontSize = {
+  xs: "1.1rem",
+  sm: "1.2rem",
 };
