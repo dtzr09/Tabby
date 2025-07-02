@@ -4,11 +4,7 @@ import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
 import RoadmapCard from "./RoadmapCard";
 import { useMobile } from "@/hooks/useMobile";
-import {
-  headerFontSize,
-  subHeaderFontSize,
-  titleFontSize,
-} from "@/styles/static";
+import { titleFontSize } from "@/styles/static";
 
 const RoadmapPage = () => {
   const theme = useTheme();
@@ -45,7 +41,7 @@ const RoadmapPage = () => {
           }}
         >
           <Typography variant="h4" fontWeight={500}>
-            Tabby's Roadmap
+            {"Tabby's Roadmap"}
           </Typography>
           <Typography
             variant="body1"

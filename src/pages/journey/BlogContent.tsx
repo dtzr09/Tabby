@@ -157,7 +157,7 @@ const BlogContent = () => {
             fontWeight: "bold",
           }}
         >
-          Hi, I'm Derrick, the creator of Tabby.{" "}
+          {"Hi, I'm Derrick, the creator of Tabby."}
           <Box component="span" sx={{ display: "inline-block", ml: 1 }}>
             <WavingHand fontSize="small" sx={{ color: "#CB9821" }} />
           </Box>
